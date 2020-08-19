@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HeathRobotics.Engineering.UnitConversion
 {
@@ -27,13 +25,67 @@ namespace HeathRobotics.Engineering.UnitConversion
             {
                 switch (sourcePrefix)
                 {
+                    case PrefixUnits.Yotta:
+                        value = value * Math.Pow(10.0, 24);
+                        break;
+                    case PrefixUnits.Zetta:
+                        value = value * Math.Pow(10.0, 21);
+                        break;
+                    case PrefixUnits.Exa:
+                        value = value * Math.Pow(10.0, 18);
+                        break;
+                    case PrefixUnits.Peta:
+                        value = value * Math.Pow(10.0, 15);
+                        break;
+                    case PrefixUnits.Tera:
+                        value = value * Math.Pow(10.0, 12);
+                        break;
+                    case PrefixUnits.Giga:
+                        value = value * Math.Pow(10.0, 9);
+                        break;
+                    case PrefixUnits.Mega:
+                        value = value * Math.Pow(10.0, 6);
+                        break;
+                    case PrefixUnits.Kilo:
+                        value = value * Math.Pow(10.0, 3);
+                        break;
+                    case PrefixUnits.Hecto:
+                        value = value * Math.Pow(10.0, 2);
+                        break;
+                    case PrefixUnits.Deka:
+                        value = value * 10.0;
+                        break;
+                    case PrefixUnits.Deci:
+                        value = value / 10.0;
+                        break;
+                    case PrefixUnits.Centi:
+                        value = value / 100.0;
+                        break;
                     case PrefixUnits.Milli:
-                        value = value / 1000.0;
+                        value = value / Math.Pow(10.0, 3);
+                        break;
+                    case PrefixUnits.Micro:
+                        value = value / Math.Pow(10.0, 6);
+                        break;
+                    case PrefixUnits.Nano:
+                        value = value / Math.Pow(10.0, 9);
+                        break;
+                    case PrefixUnits.Pico:
+                        value = value / Math.Pow(10.0, 12);
+                        break;
+                    case PrefixUnits.Femto:
+                        value = value / Math.Pow(10.0, 15);
+                        break;
+                    case PrefixUnits.Atto:
+                        value = value / Math.Pow(10.0, 18);
+                        break;
+                    case PrefixUnits.Zepto:
+                        value = value / Math.Pow(10.0, 21);
+                        break;
+                    case PrefixUnits.Yocto:
+                        value = value / Math.Pow(10.0, 24);
                         break;
 
-                    case PrefixUnits.Kilo:
-                        value = value * 1000.0;
-                        break;
                 }
             }
             return value;
@@ -45,13 +97,67 @@ namespace HeathRobotics.Engineering.UnitConversion
             {
                 switch (targetPrefix)
                 {
+                    case PrefixUnits.Yotta:
+                        value = value / Math.Pow(10.0, 24);
+                        break;
+                    case PrefixUnits.Zetta:
+                        value = value / Math.Pow(10.0, 21);
+                        break;
+                    case PrefixUnits.Exa:
+                        value = value / Math.Pow(10.0, 18);
+                        break;
+                    case PrefixUnits.Peta:
+                        value = value / Math.Pow(10.0, 15);
+                        break;
+                    case PrefixUnits.Tera:
+                        value = value / Math.Pow(10.0, 12);
+                        break;
+                    case PrefixUnits.Giga:
+                        value = value / Math.Pow(10.0, 9);
+                        break;
+                    case PrefixUnits.Mega:
+                        value = value / Math.Pow(10.0, 6);
+                        break;
+                    case PrefixUnits.Kilo:
+                        value = value / Math.Pow(10.0, 3);
+                        break;
+                    case PrefixUnits.Hecto:
+                        value = value / Math.Pow(10.0, 2);
+                        break;
+                    case PrefixUnits.Deka:
+                        value = value / 10.0;
+                        break;
+                    case PrefixUnits.Deci:
+                        value = value * 10.0;
+                        break;
+                    case PrefixUnits.Centi:
+                        value = value * 100.0;
+                        break;
                     case PrefixUnits.Milli:
-                        value = value * 1000.0;
+                        value = value * Math.Pow(10.0, 3);
+                        break;
+                    case PrefixUnits.Micro:
+                        value = value * Math.Pow(10.0, 6);
+                        break;
+                    case PrefixUnits.Nano:
+                        value = value * Math.Pow(10.0, 9);
+                        break;
+                    case PrefixUnits.Pico:
+                        value = value * Math.Pow(10.0, 12);
+                        break;
+                    case PrefixUnits.Femto:
+                        value = value * Math.Pow(10.0, 15);
+                        break;
+                    case PrefixUnits.Atto:
+                        value = value * Math.Pow(10.0, 18);
+                        break;
+                    case PrefixUnits.Zepto:
+                        value = value * Math.Pow(10.0, 21);
+                        break;
+                    case PrefixUnits.Yocto:
+                        value = value * Math.Pow(10.0, 24);
                         break;
 
-                    case PrefixUnits.Kilo:
-                        value = value / 1000.0;
-                        break;
                 }
             }
             return value;

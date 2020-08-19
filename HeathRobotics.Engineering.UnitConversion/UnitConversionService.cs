@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HeathRobotics.Engineering.UnitConversion
 {
@@ -17,14 +15,15 @@ namespace HeathRobotics.Engineering.UnitConversion
             this.prefixConversionService = prefixConversionService;
         }
 
-        public LengthMeasure ConvertLength(LengthMeasure measure, PrefixUnits targetPrefix, LengthUnits targetUnits)
+        public LengthMeasure ConvertLength(LengthMeasure measure, PrefixUnits targetPrefix, LengthUnits targetUnits, int precision)
         {
-            var si = MeasureToSI(measure);
-            var target = SIToMeasure(si.Value, targetPrefix, targetUnits);
+            var si = ToSI(measure);
+            var target = FromSI(si.Value, targetPrefix, targetUnits);
+            target.Value = Math.Round(target.Value, precision);
             return target;
         }
 
-        private LengthMeasure MeasureToSI(LengthMeasure measure)
+        private LengthMeasure ToSI(LengthMeasure measure)
         {
             measure.Value = this.prefixConversionService.Convert(measure.Value, measure.Prefix, PrefixUnits.None);
 
@@ -42,7 +41,7 @@ namespace HeathRobotics.Engineering.UnitConversion
             return siMeasure;
         }
 
-        private LengthMeasure SIToMeasure(double value, PrefixUnits targetPrefix, LengthUnits targetUnits)
+        private LengthMeasure FromSI(double value, PrefixUnits targetPrefix, LengthUnits targetUnits)
         {
             var targetMeasure = new LengthMeasure() { Value = 0.0, Units = targetUnits, Prefix = targetPrefix};
             switch (targetUnits)
