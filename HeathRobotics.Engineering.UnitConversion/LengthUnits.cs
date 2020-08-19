@@ -7,6 +7,8 @@ namespace HeathRobotics.Engineering.UnitConversion
     public enum LengthUnits
     {
         Meters,
-        Feet
+        Feet,
+        Miles,
+        Yards
     }
 }

@@ -36,6 +36,12 @@ namespace HeathRobotics.Engineering.UnitConversion
                 case LengthUnits.Feet:
                     siMeasure.Value = measure.Value * 0.3048;
                     break;
+                case LengthUnits.Miles:
+                    siMeasure.Value = measure.Value * 1609.344;
+                    break;
+                case LengthUnits.Yards:
+                    siMeasure.Value = measure.Value * 0.9144;
+                    break;
             }
 
             return siMeasure;
@@ -51,6 +57,12 @@ namespace HeathRobotics.Engineering.UnitConversion
                     break;
                 case LengthUnits.Feet:
                     targetMeasure.Value = value / 0.3048;
+                    break;
+                case LengthUnits.Miles:
+                    targetMeasure.Value = value / 1609.344;
+                    break;
+                case LengthUnits.Yards:
+                    targetMeasure.Value = value / 0.9144;
                     break;
             }
 
