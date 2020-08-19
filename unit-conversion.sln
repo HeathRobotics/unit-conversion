@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeathRobotics.Engineering.UnitConversion", "HeathRobotics.Engineering.UnitConversion\HeathRobotics.Engineering.UnitConversion.csproj", "{B9EA2290-3D52-4CED-AF7A-89E1B5356560}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B961454B-91D7-4183-9393-B70964703BA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeathRobotics.Engineering.UnitConversion.Tests", "Tests\HeathRobotics.Engineering.UnitConversion.Tests\HeathRobotics.Engineering.UnitConversion.Tests.csproj", "{13F2C088-9C33-457E-9E7C-9BEFB06460D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9EA2290-3D52-4CED-AF7A-89E1B5356560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9EA2290-3D52-4CED-AF7A-89E1B5356560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9EA2290-3D52-4CED-AF7A-89E1B5356560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9EA2290-3D52-4CED-AF7A-89E1B5356560}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13F2C088-9C33-457E-9E7C-9BEFB06460D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13F2C088-9C33-457E-9E7C-9BEFB06460D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13F2C088-9C33-457E-9E7C-9BEFB06460D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13F2C088-9C33-457E-9E7C-9BEFB06460D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{13F2C088-9C33-457E-9E7C-9BEFB06460D5} = {B961454B-91D7-4183-9393-B70964703BA0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4BBDABF7-6EFE-43A2-956C-BF8EA085D83B}
+	EndGlobalSection
+EndGlobal
