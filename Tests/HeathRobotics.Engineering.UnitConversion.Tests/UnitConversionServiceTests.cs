@@ -6,15 +6,18 @@ namespace HeathRobotics.Engineering.UnitConversion.Tests
 {
     public class UnitConversionServiceTests
     {
-        private readonly IUnitConversionService unitConversionService;
+        private readonly IAggregateUnitConversionService unitConversionService;
 
         public UnitConversionServiceTests()
         {
             var mockPrefixLogger = new Mock<ILogger<PrefixConversionService>>();
             var prefixConversionService = new PrefixConversionService(mockPrefixLogger.Object);
 
+            var mockLengthLogger = new Mock<ILogger<LengthUnitConversionService>>();
+            var lengthUnitConversionService = new LengthUnitConversionService(mockLengthLogger.Object, prefixConversionService);
+
             var mockLogger = new Mock<ILogger<UnitConversionService>>();
-            this.unitConversionService = new UnitConversionService(mockLogger.Object, prefixConversionService);
+            this.unitConversionService = new UnitConversionService(mockLogger.Object, lengthUnitConversionService);
         }
 
         [Theory]

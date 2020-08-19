@@ -3,72 +3,22 @@ using System;
 
 namespace HeathRobotics.Engineering.UnitConversion
 {
-    public class UnitConversionService : IUnitConversionService
+    public class UnitConversionService : IAggregateUnitConversionService
     {
         private readonly ILogger<UnitConversionService> logger;
-        private readonly IPrefixConversionService prefixConversionService;
+        private readonly IUnitConversionService<LengthMeasure, LengthUnits> lengthUnitConversionService;
 
         public UnitConversionService(ILogger<UnitConversionService> logger,
-            IPrefixConversionService prefixConversionService)
+            IUnitConversionService<LengthMeasure, LengthUnits> lengthUnitConversionService
+            )
         {
             this.logger = logger;
-            this.prefixConversionService = prefixConversionService;
+            this.lengthUnitConversionService = lengthUnitConversionService;
         }
 
         public LengthMeasure ConvertLength(LengthMeasure measure, PrefixUnits targetPrefix, LengthUnits targetUnits, int precision)
         {
-            var si = ToSI(measure);
-            var target = FromSI(si.Value, targetPrefix, targetUnits);
-            target.Value = Math.Round(target.Value, precision);
-            return target;
-        }
-
-        private LengthMeasure ToSI(LengthMeasure measure)
-        {
-            measure.Value = this.prefixConversionService.Convert(measure.Value, measure.Prefix, PrefixUnits.None);
-
-            var siMeasure = new LengthMeasure() { Value = 0.0, Units = LengthUnits.Meters, Prefix = PrefixUnits.None };
-            switch(measure.Units)
-            {
-                case LengthUnits.Meters:
-                    siMeasure.Value = measure.Value * 1.0;
-                    break;
-                case LengthUnits.Feet:
-                    siMeasure.Value = measure.Value * 0.3048;
-                    break;
-                case LengthUnits.Miles:
-                    siMeasure.Value = measure.Value * 1609.344;
-                    break;
-                case LengthUnits.Yards:
-                    siMeasure.Value = measure.Value * 0.9144;
-                    break;
-            }
-
-            return siMeasure;
-        }
-
-        private LengthMeasure FromSI(double value, PrefixUnits targetPrefix, LengthUnits targetUnits)
-        {
-            var targetMeasure = new LengthMeasure() { Value = 0.0, Units = targetUnits, Prefix = targetPrefix};
-            switch (targetUnits)
-            {
-                case LengthUnits.Meters:
-                    targetMeasure.Value = value / 1.0;
-                    break;
-                case LengthUnits.Feet:
-                    targetMeasure.Value = value / 0.3048;
-                    break;
-                case LengthUnits.Miles:
-                    targetMeasure.Value = value / 1609.344;
-                    break;
-                case LengthUnits.Yards:
-                    targetMeasure.Value = value / 0.9144;
-                    break;
-            }
-
-            targetMeasure.Value = this.prefixConversionService.Convert(targetMeasure.Value, PrefixUnits.None, targetPrefix);
-
-            return targetMeasure;
+            return this.lengthUnitConversionService.Convert(measure, targetPrefix, targetUnits, precision);
         }
     }
 }

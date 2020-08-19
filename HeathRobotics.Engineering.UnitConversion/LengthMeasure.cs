@@ -4,10 +4,7 @@ using System.Text;
 
 namespace HeathRobotics.Engineering.UnitConversion
 {
-    public class LengthMeasure
+    public class LengthMeasure : BaseMeasure<LengthUnits>
     {
-        public double Value { get; set; }
-        public PrefixUnits Prefix { get; set; }
-        public LengthUnits Units { get; set; }
     }
 }
