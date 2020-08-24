@@ -9,7 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B961454B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeathRobotics.Engineering.UnitConversion.Tests", "Tests\HeathRobotics.Engineering.UnitConversion.Tests\HeathRobotics.Engineering.UnitConversion.Tests.csproj", "{13F2C088-9C33-457E-9E7C-9BEFB06460D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeathRobotics.Engineering.UnitConversion.Console", "HeathRobotics.Engineering.UnitConversion.Console\HeathRobotics.Engineering.UnitConversion.Console.csproj", "{885B07AA-CF54-4A1A-B9C4-2C2EE9104680}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeathRobotics.Engineering.UnitConversion.Console", "HeathRobotics.Engineering.UnitConversion.Console\HeathRobotics.Engineering.UnitConversion.Console.csproj", "{885B07AA-CF54-4A1A-B9C4-2C2EE9104680}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeathRobotics.Engineering.UnitConversion.Api", "HeathRobotics.Engineering.UnitConversion.Api\HeathRobotics.Engineering.UnitConversion.Api.csproj", "{0452121B-FB3E-4E8A-B527-6781CD0823A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeathRobotics.Engineering.UnitConversion.Api.Models", "HeathRobotics.Engineering.UnitConversion.Api.Models\HeathRobotics.Engineering.UnitConversion.Api.Models.csproj", "{4083BF57-7E9D-472C-B56B-B7B5CCFF8F4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +33,14 @@ Global
 		{885B07AA-CF54-4A1A-B9C4-2C2EE9104680}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{885B07AA-CF54-4A1A-B9C4-2C2EE9104680}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{885B07AA-CF54-4A1A-B9C4-2C2EE9104680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0452121B-FB3E-4E8A-B527-6781CD0823A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0452121B-FB3E-4E8A-B527-6781CD0823A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0452121B-FB3E-4E8A-B527-6781CD0823A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0452121B-FB3E-4E8A-B527-6781CD0823A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4083BF57-7E9D-472C-B56B-B7B5CCFF8F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4083BF57-7E9D-472C-B56B-B7B5CCFF8F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4083BF57-7E9D-472C-B56B-B7B5CCFF8F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4083BF57-7E9D-472C-B56B-B7B5CCFF8F4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
