@@ -26,8 +26,12 @@ namespace HeathRobotics.Engineering.UnitConversion.Api.Controllers
             var mapperConfiguration = new MapperConfiguration(
                 cfg => 
                 {
-                    cfg.CreateMap<LengthMeasureModel, LengthMeasure>();
-                    cfg.CreateMap<LengthMeasure, LengthMeasureModel>();
+                    cfg.CreateMap<LengthMeasureConversionModel, LengthMeasure>()
+                    .ForMember(dest => dest.Prefix, opt => opt.MapFrom(src => Enum.Parse(typeof(PrefixUnits), src.Prefix, true)))
+                    .ForMember(dest => dest.Units, opt => opt.MapFrom(src => Enum.Parse(typeof(LengthUnits), src.Units, true)));
+                    cfg.CreateMap<LengthMeasure, LengthMeasureConversionModel>()
+                    .ForMember(dest => dest.Prefix, opt => opt.MapFrom(src => src.Prefix.ToString()))
+                    .ForMember(dest => dest.Units, opt => opt.MapFrom(src => src.Units.ToString()));
 
                 });
             this.mapper = new Mapper(mapperConfiguration);
@@ -35,14 +39,16 @@ namespace HeathRobotics.Engineering.UnitConversion.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult<LengthMeasureModel> Convert([FromBody] LengthMeasureModel apiModel)
+        public ActionResult<LengthMeasureConversionModel> Convert([FromBody] LengthMeasureConversionModel apiModel)
         {
-            var dslModel = this.mapper.Map<LengthMeasureModel, LengthMeasure>(apiModel);
-            dslModel.Prefix = PrefixUnits.None; //todo
-            dslModel.Units = LengthUnits.Feet; //todo
+            var dslModel = this.mapper.Map<LengthMeasureConversionModel, LengthMeasure>(apiModel);
 
-            var result = this.unitConversionService.ConvertLength(dslModel, PrefixUnits.None, LengthUnits.Meters, 3);
-            var response = this.mapper.Map<LengthMeasure, LengthMeasureModel>(result);
+            var targetPrefix = (PrefixUnits)Enum.Parse(typeof(PrefixUnits), apiModel.TargetPrefix, true);
+            var targetUnits = (LengthUnits)Enum.Parse(typeof(LengthUnits), apiModel.TargetUnits, true);
+            var targetPrecision = apiModel.Precision.HasValue ? apiModel.Precision.Value : 3;
+
+            var result = this.unitConversionService.ConvertLength(dslModel, targetPrefix, targetUnits, targetPrecision);
+            var response = this.mapper.Map<LengthMeasure, LengthMeasureConversionModel>(result);
             return response;
         }
     }

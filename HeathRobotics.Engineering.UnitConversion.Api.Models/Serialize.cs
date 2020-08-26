@@ -6,6 +6,6 @@ namespace HeathRobotics.Engineering.UnitConversion.Api.Models
 {
     public static class Serialize
     {
-        public static string ToJson(this LengthMeasureModel self) => JsonConvert.SerializeObject(self, Converter.Settings);
+        public static string ToJson(this LengthMeasureConversionModel self) => JsonConvert.SerializeObject(self, Converter.Settings);
     }
 }
