@@ -16,10 +16,10 @@ namespace HeathRobotics.Engineering.UnitConversion.Api.Models.Length
         [JsonProperty("units", NullValueHandling = NullValueHandling.Ignore)]
         public string Units { get; set; }
 
-        [JsonProperty("targetPrefix", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("target_prefix", NullValueHandling = NullValueHandling.Ignore)]
         public string TargetPrefix { get; set; }
 
-        [JsonProperty("targetUnits", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("target_units", NullValueHandling = NullValueHandling.Ignore)]
         public string TargetUnits { get; set; }
 
         [JsonProperty("precision", NullValueHandling = NullValueHandling.Ignore)]
