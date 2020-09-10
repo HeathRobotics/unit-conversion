@@ -6,7 +6,6 @@ using HeathRobotics.Engineering.UnitConversion.Api.Models.Length;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc.Core;
 
 namespace HeathRobotics.Engineering.UnitConversion.Api.Controllers
 {
@@ -20,7 +19,7 @@ namespace HeathRobotics.Engineering.UnitConversion.Api.Controllers
 
         public LengthController(ILogger<LengthController> logger, IAggregateUnitConversionService unitConversionService)
         {
-            logger = logger;
+            this.logger = logger;
             this.unitConversionService = unitConversionService;
 
             #region mapper configuration

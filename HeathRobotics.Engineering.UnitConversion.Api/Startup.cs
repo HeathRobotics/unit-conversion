@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,7 @@ namespace HeathRobotics.Engineering.UnitConversion.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton(new LoggerFactory().AddSerilog());
+            services.AddLogging();
 
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
@@ -42,6 +44,8 @@ namespace HeathRobotics.Engineering.UnitConversion.Api
             services.AddScoped<IAggregateUnitConversionService, UnitConversionService>();
             services.AddScoped<IPrefixConversionService, PrefixConversionService>();
             services.AddScoped<IUnitConversionService<LengthMeasure, LengthUnits>, LengthUnitConversionService>();
+            
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddCors();
             services.AddControllers().AddNewtonsoftJson();
@@ -52,8 +56,10 @@ namespace HeathRobotics.Engineering.UnitConversion.Api
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "HeathRobotics Unit Conversion API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "unit-conversion-api", Version = "v1" });
             });
+
+            services.AddSwaggerGenNewtonsoftSupport();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,17 +70,15 @@ namespace HeathRobotics.Engineering.UnitConversion.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            app.UseSwagger(c =>
+            {
+                c.RouteTemplate = "docs/{documentName}/swagger.json";
+            });
 
-            //app.UseAuthentication();
-            //app.UseResponseCaching();
-
-            
-
-            app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "HeathRobotics Unit Conversion API V1");
+                c.SwaggerEndpoint("v1/swagger.json", "supply-chain-api-v1");
+                c.RoutePrefix = "docs";
             });
 
             app.UseRouting();
